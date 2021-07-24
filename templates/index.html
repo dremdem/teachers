@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+
+
+<h1>Directory</h1>
+<table>
+    <thead></thead>
+    <tbody>
+    {% for teacher in teachers %}
+        <tr>
+            <td><strong>{{ teacher.first_name }} {{ teacher.last_name }}</strong></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+</body>
+</html>
