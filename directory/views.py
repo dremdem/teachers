@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from directory.models import Teacher, Subject
+from directory.models import Teacher
 from directory.forms import SearchForm
 
 
