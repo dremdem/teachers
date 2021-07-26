@@ -23,3 +23,11 @@ def index(request):
     context = {"teachers": teachers,
                "form": form}
     return render(request, 'index.html', context=context)
+
+
+def teacher(request, teacher_id):
+    # TODO(*): Add not found exception handling.
+    context = {"teacher": Teacher.objects.get(pk=teacher_id)}
+    return render(request, 'teacher.html', context=context)
+
+

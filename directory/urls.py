@@ -19,4 +19,5 @@ import directory.views as views
 
 urlpatterns = [
     path('', views.index, name="index"),
+    path('teacher/<int:teacher_id>', views.teacher, name="teacher"),
 ]
