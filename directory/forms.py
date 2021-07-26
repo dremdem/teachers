@@ -20,3 +20,11 @@ class SearchForm(forms.Form):
                                          Subject.objects.values_list(
                                              "subject_name",
                                              flat=True)])
+
+
+class BulkUploadForm(forms.Form):
+    csv_file = forms.FileField(label="CSV-file with the list of teachers",
+                               widget=forms.FileInput(attrs={'accept': '.csv'}))
+    images_archive = forms.FileField(label="ZIP-file with the profile pictures",
+                                     widget=forms.FileInput(
+                                         attrs={'accept': '.zip'}))

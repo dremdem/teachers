@@ -15,7 +15,7 @@
 <h1>Directory</h1>
 <form action="/" method="post">
     {% csrf_token %}
-    {{ form }}
+    {{ search_form }}
     <input type="submit" value="Submit">
 </form>
 
@@ -24,11 +24,22 @@
     <tbody>
     {% for teacher in teachers %}
         <tr>
-            <td><strong><a href="/teacher/{{ teacher.id }}">{{ teacher.first_name }} {{ teacher.last_name }}</a></strong></td>
+            <td><strong><a
+                    href="/teacher/{{ teacher.id }}">{{ teacher.first_name }} {{ teacher.last_name }}</a></strong>
+            </td>
         </tr>
     {% endfor %}
     </tbody>
 
 </table>
+
+<h1>Bulk Upload</h1>
+<form action="/bulk_upload" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ bulk_upload_form }}
+    <input type="submit" value="Submit">
+</form>
+
+
 </body>
 </html>
