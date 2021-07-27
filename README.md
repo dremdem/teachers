@@ -2,7 +2,7 @@
 
 ## Description
 
-The detailed description [in the PDF-file](Tech Test.pdf)
+The detailed description [in the PDF-file](Tech_Test.pdf)
 
 ## Installation
 
