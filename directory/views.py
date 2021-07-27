@@ -77,15 +77,15 @@ def teacher(request, teacher_id):
 
 @login_required
 def bulk_upload(request):
-    search_form = SearchForm()
-    teachers = Teacher.objects.all()
     bulk_upload_form = BulkUploadForm()
-    context = {"teachers": teachers,
-               "search_form": search_form,
-               "bulk_upload_form": bulk_upload_form}
     if request.method == 'POST':
         bulk_upload_form = BulkUploadForm(request.POST, request.FILES)
         if bulk_upload_form.is_valid():
             upload_teachers_from_csv(request.FILES['csv_file'],
                                      request.FILES['images_archive'])
+    teachers = Teacher.objects.all()
+    search_form = SearchForm()
+    context = {"teachers": teachers,
+               "search_form": search_form,
+               "bulk_upload_form": bulk_upload_form}
     return render(request, 'index.html', context=context)
