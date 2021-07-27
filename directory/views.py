@@ -2,6 +2,7 @@ import csv
 import os
 import zipfile
 
+from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.shortcuts import render
 
@@ -31,7 +32,8 @@ def upload_teachers_from_csv(profiles_csv_file, images_zip_file):
                 if t['Profile picture'] not in zfile.namelist():
                     with open(os.path.join(settings.MEDIA_ROOT,
                                            'profile_images',
-                                           'placeholder.png'), 'rb') as profile_picture_file:
+                                           'placeholder.png'),
+                              'rb') as profile_picture_file:
                         new_teacher.profile_picture.save('placeholder.png',
                                                          profile_picture_file,
                                                          True)
@@ -73,6 +75,7 @@ def teacher(request, teacher_id):
     return render(request, 'teacher.html', context=context)
 
 
+@login_required
 def bulk_upload(request):
     search_form = SearchForm()
     teachers = Teacher.objects.all()
